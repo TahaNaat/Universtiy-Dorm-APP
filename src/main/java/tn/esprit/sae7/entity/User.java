@@ -26,4 +26,8 @@ public class User {
     @ManyToMany
     Set<Cours>cours;
 
+    public void setStatuSocial(StatuSocial status) {
+        this.status = status;
+
+    }
 }

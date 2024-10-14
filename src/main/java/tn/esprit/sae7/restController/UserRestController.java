@@ -1,10 +1,13 @@
 package tn.esprit.sae7.restController;
 
 import lombok.AllArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
+import tn.esprit.sae7.entity.StatuSocial;
 import tn.esprit.sae7.entity.User;
 import tn.esprit.sae7.service.IUserService;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -42,4 +45,23 @@ public class UserRestController {
     public User fetchUserById(@PathVariable Long id) {
         return userService.fetchUserById(id);
     }
+
+    @GetMapping("/name/{nom}")
+    public List<User> fetchUsersByName(@PathVariable String nom) {
+        return userService.fetchUsersByName(nom);
+    }
+
+    @PutMapping("/status")
+    public User modifierUserStatus(
+            @RequestParam String nom,
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dateNaissance,
+            @RequestParam StatuSocial status) {
+
+        User existingUser = userService.fetchUserByNomAndDateNaissance(nom, dateNaissance);
+
+        existingUser.setStatuSocial(status);
+
+        return userService.modifierUser(existingUser);
+    }
+
 }
