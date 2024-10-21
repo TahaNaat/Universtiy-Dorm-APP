@@ -5,6 +5,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.sae7.entity.StatuSocial;
 import tn.esprit.sae7.entity.User;
+import tn.esprit.sae7.repository.ICourseRepository;
 import tn.esprit.sae7.service.IUserService;
 
 import java.time.LocalDate;
@@ -15,6 +16,7 @@ import java.util.List;
 @RequestMapping("/user")
 public class UserRestController {
     IUserService userService;
+    ICourseRepository courseRepository;
 
     @PostMapping
     public User ajouterUser(@RequestBody User user) {
@@ -63,5 +65,16 @@ public class UserRestController {
 
         return userService.modifierUser(existingUser);
     }
+    @PutMapping("/assignCourse")
+    public User addAndAssignCours(
+            @RequestParam Long id,
+            @RequestParam String nomCourse) {
+
+        User existingUser = userService.fetchUserById(id);
+
+        return userService.addUserAndAssignToCourse(existingUser, nomCourse);
+    }
+
+
 
 }

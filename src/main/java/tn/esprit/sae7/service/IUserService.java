@@ -14,4 +14,5 @@ public interface IUserService {
     List<User> fetchUsersByName(String nom);
 
     User fetchUserByNomAndDateNaissance(String nom, LocalDate dateNaissance);
+    User addUserAndAssignToCourse(User user,String nom);
 }

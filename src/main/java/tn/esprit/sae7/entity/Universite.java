@@ -3,6 +3,9 @@ package tn.esprit.sae7.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.Calendar;
+import java.util.List;
+
 @Entity
 @Getter
 @Setter
@@ -17,5 +20,7 @@ public class Universite {
     String adresse;
     @OneToOne
     private Foyer foyer;
+
+
 
 }

@@ -16,6 +16,7 @@ public class Cours {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer idCourse;
+    @Column(unique = true)
     String nom;
     @ManyToMany(mappedBy = "cours" )
     Set<User>users;
