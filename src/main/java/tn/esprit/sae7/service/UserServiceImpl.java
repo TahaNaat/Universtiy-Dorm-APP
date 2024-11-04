@@ -3,12 +3,8 @@ package tn.esprit.sae7.service;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import tn.esprit.sae7.entity.Cours;
-import tn.esprit.sae7.entity.Foyer;
-import tn.esprit.sae7.entity.Universite;
 import tn.esprit.sae7.entity.User;
 import tn.esprit.sae7.repository.ICourseRepository;
-import tn.esprit.sae7.repository.IFoyerRepository;
-import tn.esprit.sae7.repository.IUniversiteRepository;
 import tn.esprit.sae7.repository.IUserRepository;
 
 import java.time.LocalDate;
@@ -65,7 +61,7 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public void deleteUser(Long idUser) { // Changed from Void to void
+    public void deleteUser(Long idUser) {
         if (userRepository.existsById(idUser)) {
             userRepository.deleteById(idUser);
         } else {

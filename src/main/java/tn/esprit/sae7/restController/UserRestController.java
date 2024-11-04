@@ -7,7 +7,6 @@ import tn.esprit.sae7.entity.StatuSocial;
 import tn.esprit.sae7.entity.User;
 import tn.esprit.sae7.repository.ICourseRepository;
 import tn.esprit.sae7.service.IUserService;
-
 import java.time.LocalDate;
 import java.util.List;
 
