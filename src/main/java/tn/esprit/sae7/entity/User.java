@@ -23,7 +23,7 @@ public class User {
     LocalDate dateNaissance;
     @Enumerated(EnumType.ORDINAL)
     StatuSocial status;
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.PERSIST)
     Set<Cours>cours;
 
     public void setStatuSocial(StatuSocial status) {

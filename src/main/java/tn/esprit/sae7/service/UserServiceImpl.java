@@ -1,6 +1,8 @@
 package tn.esprit.sae7.service;
 
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import tn.esprit.sae7.entity.Cours;
 import tn.esprit.sae7.entity.User;
@@ -12,6 +14,7 @@ import java.util.List;
 
 @Service
 @AllArgsConstructor
+@Slf4j
 public class UserServiceImpl implements IUserService {
     IUserRepository userRepository;
     ICourseRepository courseRepository;
@@ -67,5 +70,12 @@ public class UserServiceImpl implements IUserService {
         } else {
             throw new RuntimeException("User with ID " + idUser + " does not exist.");
         }
+    }
+    //@Scheduled(fixedRate = 5000)
+    //@Scheduled(fixedDelay = 5000)
+    //@Scheduled(cron = "*/5 * * * * *")
+    @Scheduled(cron = "1 */1 * * * *")
+    void testScheduler(){
+        log.info("Test Schedule");
     }
 }
